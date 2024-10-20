@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  backendUrl: 'https://securitymanager-6a48db30192e.herokuapp.com',
+
 };
