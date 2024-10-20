@@ -1,0 +1,8 @@
+{
+  "name": "V0AppMobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "d6b65816"
+}
