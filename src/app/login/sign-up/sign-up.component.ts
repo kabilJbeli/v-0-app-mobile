@@ -29,7 +29,9 @@ export class SignUpComponent  implements OnInit {
       password: [null, Validators.required],
       image:[null, Validators.required],
       imageSrc:[null, []],
-      address:[null, Validators.required],
+      street:[null, Validators.required],
+
+      address:[null, []],
     });
   }
   get f() {
@@ -37,6 +39,13 @@ export class SignUpComponent  implements OnInit {
   }
 
   createUser():void{
+    this.form.patchValue({
+address:{
+country : this.form.value.country.name,
+  city:this.form.value.province.name,
+  street:this.form.value.street,
+}
+    })
     this.service.createUser(this.form.value).subscribe(result=>{
       console.log(result);
     });
