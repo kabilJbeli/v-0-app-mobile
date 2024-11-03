@@ -8,37 +8,55 @@
 
   <form [formGroup]="form" (ngSubmit)="createUser()">
   <ion-item lines="none" color="light" class="rowStyle">
-    <ion-input type="text" placeholder="Name" required formControlName="name" ></ion-input>
+    <ion-input type="text" placeholder="First Name" required formControlName="firstName" ></ion-input>
   </ion-item>
     <ion-item lines="none" color="light" class="rowStyle">
       <ion-input type="text" placeholder="Last Name" required  formControlName="lastName"></ion-input>
     </ion-item>
 
+    <ion-item lines="none" color="light" class="rowStyle">
+      <ion-input type="text" placeholder="User Name" required formControlName="username" ></ion-input>
+    </ion-item>
 
     <ion-item  *ngIf="countries$ | async as countries" class="rowStyle">
       <ion-select label="Country" placeholder="Choose your country" formControlName="country">
-        <ion-select-option *ngFor="let country of countries" value="country" >{{country.name}}</ion-select-option>
+        <ion-select-option *ngFor="let country of countries" [value]="country" >{{country.name}}</ion-select-option>
       </ion-select>
     </ion-item>
 
     <ion-item  *ngIf="f['country'].value !==null" class="rowStyle" >
       <ion-select *ngIf="f['country'] as country"   label="Province" formControlName="province" placeholder="Choose your province">
-        <ion-select-option *ngFor="let province of country.value.provinces" value="province">{{province.name}}</ion-select-option>
+        <ion-select-option *ngFor="let province of country.value.provinces" [value]="province">{{province.name}}</ion-select-option>
       </ion-select>
     </ion-item>
 
 
     <ion-item lines="none" color="light" class="rowStyle">
-    <ion-input type="text" placeholder="Email" required  formControlName="email"></ion-input>
-  </ion-item>
+      <ion-input type="text" placeholder="Address" required formControlName="address" ></ion-input>
+    </ion-item>
 
+    <ion-item lines="none" color="light" class="rowStyle">
+    <ion-input type="email" placeholder="Email" required  formControlName="email"></ion-input>
+  </ion-item>
 
 
   <ion-item lines="none" color="light" class="rowStyle">
     <ion-input type="password" placeholder="Password" required  formControlName="password"></ion-input>
   </ion-item>
+
+    <ion-item lines="none" color="primary" class="rowStyle"><input
+        type="file"
+        id="file-upload"
+        style="display: none"
+        (change)="setImage($event)"
+
+      />
+ <ion-button class="rowStyleButton" color="primary" type="button" (click)=openFileDialog()>
+        Upload {{f['imageSrc'].value}}
+      </ion-button>
+    </ion-item>
   <ion-item lines="none" class="align" color="danger">
-    <ion-button color="danger" class="rowStyleButton" [disabled]="form.invalid"  type="submit">SignUp</ion-button>
+    <ion-button color="danger" class="rowStyleButton" [disabled]="form.invalid"  type="submit">Sign Up</ion-button>
   </ion-item>
   <ion-item lines="none" class="align" color="danger">
     <ion-button color="danger" class="rowStyleButton">Cancel</ion-button>
