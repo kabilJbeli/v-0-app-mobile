@@ -49,7 +49,7 @@
         id="file-upload"
         style="display: none"
         (change)="setImage($event)"
-
+        accept=".jpg,.png,.jpeg"
       />
  <ion-button class="rowStyleButton" color="primary" type="button" (click)=openFileDialog()>
         Upload {{f['imageSrc'].value}}
