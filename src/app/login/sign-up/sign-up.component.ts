@@ -25,7 +25,7 @@ export class SignUpComponent  implements OnInit {
       username: [null, Validators.required],
       email: [null,[Validators.required,Validators.email]],
       country: [null, Validators.required],
-      province: [null,[]],
+      province: [null,[Validators.required]],
       password: [null, Validators.required],
       image:[null, Validators.required],
       imageSrc:[null, []],
@@ -46,7 +46,19 @@ country : this.form.value.country.name,
   street:this.form.value.street,
 }
     })
-    this.service.createUser(this.form.value).subscribe(result=>{
+
+    const payload :any={
+      address:this.form.value.address,
+      username:this.form.value.username,
+      email:this.form.value.email,
+      firstName:this.form.value.firstName,
+      lastName:this.form.value.lastName,
+
+      userName:this.form.value.username,
+      password:this.form.value.password,
+
+    }
+    this.service.createUser(payload).subscribe(result=>{
       console.log(result);
     });
   }
