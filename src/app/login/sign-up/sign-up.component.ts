@@ -49,11 +49,9 @@ country : this.form.value.country.name,
 
     const payload :any={
       address:this.form.value.address,
-      username:this.form.value.username,
       email:this.form.value.email,
       firstName:this.form.value.firstName,
       lastName:this.form.value.lastName,
-
       userName:this.form.value.username,
       password:this.form.value.password,
 
