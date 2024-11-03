@@ -12,7 +12,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./sign-up.component.scss'],
   providers: [CountriesService],
 })
-export class SignUpComponent  implements OnInit {
+export class SignUpComponent {
   countries$: Observable<any[]>;
   public form: FormGroup<any>;
   private base64Image: string ="";
@@ -29,8 +29,10 @@ export class SignUpComponent  implements OnInit {
       password: [null, Validators.required],
       image:[null, Validators.required],
       imageSrc:[null, []],
+      phone:[null, Validators.required],
+      cardidnumber:[null, Validators.required],
       street:[null, Validators.required],
-
+      postalCode:[null, Validators.required],
       address:[null, []],
     });
   }
@@ -44,6 +46,7 @@ address:{
 country : this.form.value.country.name,
   city:this.form.value.province.name,
   street:this.form.value.street,
+  postalCode:this.form.value.postalCode
 }
     })
 
@@ -54,15 +57,12 @@ country : this.form.value.country.name,
       lastName:this.form.value.lastName,
       userName:this.form.value.username,
       password:this.form.value.password,
-
+      phone:this.form.value.phone,
+      cardidnumber:this.form.value.cardidnumber
     }
     this.service.createUser(payload).subscribe(result=>{
       console.log(result);
     });
-  }
-
-  ngOnInit() {
-
   }
 
    openFileDialog = () => {

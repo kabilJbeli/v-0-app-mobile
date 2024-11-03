@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],
 })
-export class SignInComponent  implements OnInit {
+export class SignInComponent  {
   public form: FormGroup<any>;
 
   constructor(private formBuilder: FormBuilder, private service:UserService,private router: Router) {
@@ -18,7 +18,6 @@ export class SignInComponent  implements OnInit {
     });
   }
 
-  ngOnInit() {}
   get f() {
     return this.form.controls;
   }
