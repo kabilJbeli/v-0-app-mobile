@@ -1,0 +1,21 @@
+<ion-content color="dark" padding>
+<ion-row>
+    <ion-col>
+      <ion-icon  color="light"></ion-icon>
+    </ion-col>
+  </ion-row>
+ <form [formGroup]="form" (ngSubmit)="signIn()">
+    <ion-item lines="none" color="light" class="rowStyle">
+      <ion-input type="email" placeholder="Email" required  formControlName="username"></ion-input>
+    </ion-item>
+    <ion-item lines="none" color="light" class="rowStyle">
+      <ion-input type="password" placeholder="Password" required  formControlName="password"></ion-input>
+    </ion-item>
+    <ion-item lines="none" class="align" color="danger">
+      <ion-button color="danger" class="rowStyleButton" [disabled]="form.invalid"  type="submit">Sign In</ion-button>
+    </ion-item>
+    <ion-item lines="none" class="align" color="danger">
+      <ion-button color="danger" class="rowStyleButton" (click)="goTo('login')">Cancel</ion-button>
+    </ion-item>
+  </form>
+</ion-content>

@@ -1,15 +1,21 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import {LoginPage} from "./login/login.page";
+import {SignInComponent} from "./login/sign-in/sign-in.component";
+import {SignUpComponent} from "./login/sign-up/sign-up.component";
 
 const routes: Routes = [
 
-  {
-    path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
-  },
+  { path: '', redirectTo: 'login',pathMatch: 'full' },
+
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    component:LoginPage,
+    children: [
+      { path: 'sign-in',     component:SignInComponent,
+      },
+      { path: 'sign-up',     component:SignUpComponent,
+      },    ]
   }
 ];
 

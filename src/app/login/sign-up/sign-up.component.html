@@ -59,7 +59,7 @@
     <ion-button color="danger" class="rowStyleButton" [disabled]="form.invalid"  type="submit">Sign Up</ion-button>
   </ion-item>
   <ion-item lines="none" class="align" color="danger">
-    <ion-button color="danger" class="rowStyleButton">Cancel</ion-button>
+    <ion-button color="danger" class="rowStyleButton" (click)="goTo('login')">Cancel</ion-button>
   </ion-item>
   </form>
 </ion-content>

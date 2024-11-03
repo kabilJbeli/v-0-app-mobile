@@ -15,4 +15,8 @@ export class UserService {
     return this.http.post<any>(`${this.backendUrl}/api/user`, user);
   }
 
+  signIn(user:any):Observable<any>{
+    return this.http.post<any>(`${this.backendUrl}/user/login`, user);
+  }
+
 }

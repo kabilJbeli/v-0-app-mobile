@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators, ɵElement} from "@angular/forms";
 import {UserService} from "../../api/user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sign-up',
@@ -16,7 +17,7 @@ export class SignUpComponent  implements OnInit {
   public form: FormGroup<any>;
   private base64Image: string ="";
 
-  constructor(private countriesService: CountriesService,private formBuilder: FormBuilder, private service:UserService) {
+  constructor(private countriesService: CountriesService,private formBuilder: FormBuilder, private service:UserService,private router: Router) {
     this.countries$ =    this.countriesService.getCountries();
     this.form = this.formBuilder.group({
       firstName: [null, Validators.required],
@@ -67,5 +68,9 @@ this.form.patchValue({
        console.error('Error reading file:', error);
      };
    }
+  goTo(routeName: string) {
+    this.router.navigateByUrl(routeName);
+  }
+
 
 }
