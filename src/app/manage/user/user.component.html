@@ -1,0 +1,22 @@
+<ion-content padding>
+  <ion-row>
+    <ion-col>
+      <ion-icon  color="light"></ion-icon>
+    </ion-col>
+  </ion-row>
+  <form [formGroup]="form" (ngSubmit)="updatePassword()">
+    <ion-item lines="none" color="light" class="rowStyle">
+      <ion-input type="email" placeholder="Email" required  formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item lines="none" color="light" class="rowStyle">
+      <ion-input type="email" placeholder="Old Password" required  formControlName="oldPassword"></ion-input>
+    </ion-item>
+    <ion-item lines="none" color="light" class="rowStyle">
+      <ion-input type="password" placeholder="New Password" required  formControlName="newPassword"></ion-input>
+    </ion-item>
+    <ion-item lines="none" class="align" color="danger">
+      <ion-button color="danger" class="rowStyleButton" [disabled]="form.invalid"  type="submit">Update</ion-button>
+    </ion-item>
+
+  </form>
+</ion-content>

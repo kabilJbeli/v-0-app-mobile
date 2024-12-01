@@ -24,7 +24,7 @@ export class SignInComponent  {
 
   signIn():void{
     this.service.signIn(this.form.value).subscribe(result=>{
-      console.log(result);
+      localStorage.setItem("token", result);
     });
   }
 

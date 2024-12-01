@@ -11,6 +11,10 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
+  uploadImage(payload:any,imageType:string):Observable<any>{
+    return this.http.post<any>(`${this.backendUrl}/image-manager/upload/${imageType}`, payload);
+  }
+
   createUser(user:any):Observable<any>{
     return this.http.post<any>(`${this.backendUrl}/api/user`, user);
   }
@@ -19,4 +23,7 @@ export class UserService {
     return this.http.post<any>(`${this.backendUrl}/user/login`, user);
   }
 
+  patchUser(PasswordResetRequest:any):Observable<any>{
+    return this.http.patch<any>(`${this.backendUrl}/api/user`, PasswordResetRequest);
+  }
 }
