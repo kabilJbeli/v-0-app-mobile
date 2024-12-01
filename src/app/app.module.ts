@@ -11,6 +11,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HomeModule} from "./home/home.module";
 import {AuthInterceptorService} from "./request-http.interceptor";
+import {ToastService} from "./services/toast.service";
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import {AuthInterceptorService} from "./request-http.interceptor";
       useClass: AuthInterceptorService,
       multi: true
     },
+    ToastService
   ],
   exports: [ FormsModule,
     ReactiveFormsModule],

@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../api/user.service";
 import {Router} from "@angular/router";
 import {ToastController} from "@ionic/angular";
+import {ToastService} from "../../services/toast.service";
 
 @Component({
   selector: 'app-user',
@@ -12,7 +13,7 @@ import {ToastController} from "@ionic/angular";
 export class UserComponent  implements OnInit {
   public form: FormGroup<any>;
 
-  constructor(private formBuilder: FormBuilder, private service:UserService,private router: Router,private toastController: ToastController) {
+  constructor(private formBuilder: FormBuilder, private service:UserService,private router: Router,private toast: ToastService) {
     this.form = this.formBuilder.group({
       email: [null,[Validators.required]],
       oldPassword: [null,[Validators.required]],
@@ -21,23 +22,15 @@ export class UserComponent  implements OnInit {
   }
 
   ngOnInit() {}
+
   updatePassword():void{
     this.service.patchUser(this.form.value).subscribe(()=>{
       this.form.reset();
-this.presentToast("top","Password Updated");
+this.toast.presentToast("top","Password Updated");
     },error => {
-      this.presentToast("top","An error has occurred");
+      this.toast.presentToast("top","An error has occurred");
 
     })
   }
 
-  async presentToast(position: 'top' | 'middle' | 'bottom',message:string) {
-    const toast = await this.toastController.create({
-      message: message,
-      duration: 1500,
-      position: position,
-    });
-
-    await toast.present();
-  }
 }
